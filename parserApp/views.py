@@ -11,13 +11,20 @@ def home(request):
 		l1=[]
 		l2 = []
 		url = request.POST.get('url')
+		cookie = request.POST.get('cookie')
 		# cook = request.POST.get('cookies')
 		# if cook != '' and cook != None:
 		# 	cookie=cook
 		# else:
 		# 	cookie = {}
 		if url != '' and url != None:
-			r=requests.get(url)
+			if cookie != '' and cookie != None:
+				cookD={}
+				for y in cookie.split(' '):
+					cookD[str(y.split('=')[0])]=y.split("=")[1][:-1]
+				r=requests.get(url, cookies=cookD)
+			else:
+				r=requests.get(url)
 			# print(cookie)
 			if r.status_code == 200:
 				count=0

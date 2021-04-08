@@ -37,6 +37,7 @@
     <form method="POST">
 	{% csrf_token %}
 	<input type="url" id="url" name="url" placeholder="https://www.example.com" {% if url %} value="{{ url }}" {% endif %}><br>
+	<input type="text" id="cookie" name="cookie" placeholder="paste your cookies here" value=""><br>
 	<!-- <input type="text" id="url" name="cookies" placeholder="cookies here"> -->
 	<button type="submit">submit</button>
 	</form>
